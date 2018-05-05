@@ -24,8 +24,10 @@ export default {
   components: { SidebarItem, ScrollBar },
   mounted(){
     console.log('---------');
+    console.log(process.env);
+
     this.loading = true;
-    http.post(process.env.BASE_API+'/sysMenu/getMenus.do',{},response => {
+    http.post('http://wx.sunfintech.com.cn/sunvue-gateway-webapp/sysMenu/getMenus.do',{},response => {
 
       console.log(response);
       this.loading = false

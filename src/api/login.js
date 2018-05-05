@@ -59,6 +59,7 @@ export function logout() {
 // }
 
 export function getUserInfo(token) {
+  console.log(process.env);
   return request({
     url: process.env.BASE_API+'/sysMenu/getMenus.do',
     method: 'post',

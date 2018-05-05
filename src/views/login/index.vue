@@ -98,8 +98,9 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true;
+          let BASE_API="http://wx.sunfintech.com.cn/sunvue-gateway-webapp";
 
-          http.post(process.env.BASE_API+'/sysUser/login.do',{
+          http.post(BASE_API+'/sysUser/login.do',{
             email : self.loginForm.username,
             pwd : self.loginForm.password
           },response => {
