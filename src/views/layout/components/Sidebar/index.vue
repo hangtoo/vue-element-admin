@@ -19,8 +19,14 @@ import { mapGetters } from 'vuex'
 import SidebarItem from './SidebarItem'
 import ScrollBar from '@/components/ScrollBar'
 import http from '@/utils/http';
+import { asyncRouterMap, constantRouterMap } from '@/router'
 
 export default {
+  data () {
+    return {
+        permission_routers: constantRouterMap
+    }
+  },
   components: { SidebarItem, ScrollBar },
   mounted(){
     console.log('---------');
@@ -28,7 +34,6 @@ export default {
 
     this.loading = true;
     http.post('http://wx.sunfintech.com.cn/sunvue-gateway-webapp/sysMenu/getMenus.do',{},response => {
-
       console.log(response);
       this.loading = false
     }).catch(err => {
