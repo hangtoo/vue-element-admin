@@ -1,7 +1,7 @@
 <template>
   <div class="components-container">
     <code>
-      {{$t('components.tinymceTips')}}
+      {{$t('components.tinymceTips')}}11111
       <a target="_blank" class="link-type" href="https://panjiachen.github.io/vue-element-admin-site/#/rich-editor"> {{$t('components.documentation')}}</a>
     </code>
     <div>
@@ -33,5 +33,3 @@ export default {
   margin-top: 20px;
 }
 </style>
-
-

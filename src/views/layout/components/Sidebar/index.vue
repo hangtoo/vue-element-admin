@@ -24,7 +24,7 @@ import { asyncRouterMap, constantRouterMap } from '@/router'
 export default {
   data () {
     return {
-        permission_routers: constantRouterMap
+        permission_routers: []
     }
   },
   components: { SidebarItem, ScrollBar },
@@ -35,6 +35,25 @@ export default {
     this.loading = true;
     http.post('http://wx.sunfintech.com.cn/sunvue-gateway-webapp/sysMenu/getMenus.do',{},response => {
       console.log(response);
+      let tmp=constantRouterMap;
+      for(let i in tmp){
+        if(tmp[i].name=='dashboard'){
+          tmp[i].hidden=true;
+        }
+        let children=tmp[i].children;
+        if(children&&children.length>0){
+
+          for(let j in children){
+            if(children[j].name=='tinymce-demo'){
+              children[j].hidden=true;
+            }
+          }
+
+        }
+
+      }
+      this.permission_routers=tmp;
+
       this.loading = false
     }).catch(err => {
        this.loading = false

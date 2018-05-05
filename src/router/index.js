@@ -36,11 +36,13 @@ export const constantRouterMap = [
     path: '/',
     component: Layout,
     redirect: 'dashboard',
+    name:'dashboard',
+    hidden: false,
     children: [{
       path: 'dashboard',
       component: _import('dashboard/index'),
       name: 'dashboard',
-      meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
+      meta: { title: 'dashboard', icon: 'dashboard', noCache: true },
     }]
   },
   {
