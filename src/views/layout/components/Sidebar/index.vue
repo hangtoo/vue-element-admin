@@ -18,9 +18,21 @@
 import { mapGetters } from 'vuex'
 import SidebarItem from './SidebarItem'
 import ScrollBar from '@/components/ScrollBar'
+import http from '@/utils/http';
 
 export default {
   components: { SidebarItem, ScrollBar },
+  mounted(){
+    console.log('---------');
+    this.loading = true;
+    http.post(process.env.BASE_API+'/sysMenu/getMenus.do',{},response => {
+
+      console.log(response);
+      this.loading = false
+    }).catch(err => {
+       this.loading = false
+    });
+  },
   computed: {
     ...mapGetters([
       'permission_routers',

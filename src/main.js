@@ -24,6 +24,10 @@ Vue.use(Element, {
   i18n: (key, value) => i18n.t(key, value)
 })
 
+import axios from 'axios';
+axios.defaults.withCredentials = true
+Vue.prototype.$axios = axios;
+
 // register global utility filters.
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])

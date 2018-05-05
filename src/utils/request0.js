@@ -42,38 +42,25 @@ axios.defaults.baseURL=  process.env.BASE_API;
 axios.defaults.withCredentials = true;
 
 const service = axios;
-const service1 = {
-  interceptors:{
-    request:{
-      use:function(){}
-    },
-    response:{
-      use:function(){}
-    }
-  }
-};
+service.transformRequest=[function (data) {// 发送请求前处理request的数据
+  console.log(data);
+
+  let keystr=common.getKey(16);
+  let secKeyParams={};
+  secKeyParams.encSecKey=rsa.encryptPublic(keystr);
+  secKeyParams.params=aes.encryptAES(keystr,data);
+
+  console.log(secKeyParams);
+  return JSON.stringify(secKeyParams);
+}];
+
 
 // request拦截器
-service1.interceptors.request.use(config => {
+service.interceptors.request.use(config => {
   // if (store.getters.token) {
   //   config.headers['X-Token'] = getToken() // 让每个请求携带自定义token 请根据实际情况自行修改
   // }
   //config.headers['Cookie'] ='SESSION=11111';
-  config.withCredentials=true;
-  config.headers['X-Requested-With'] ='XMLHttpRequest';
-  config.headers['Content-Type'] ='application/json; charset=UTF-8';
-  config.transformRequest=[function (data) {// 发送请求前处理request的数据
-    console.log(data);
-
-    let keystr=common.getKey(16);
-    let secKeyParams={};
-    secKeyParams.encSecKey=rsa.encryptPublic(keystr);
-    secKeyParams.params=aes.encryptAES(keystr,data);
-
-    console.log(secKeyParams);
-    return JSON.stringify(secKeyParams);
-  }];
-
   console.log(config);
   return config
 }, error => {
@@ -83,7 +70,7 @@ service1.interceptors.request.use(config => {
 })
 
 // respone拦截器
-service1.interceptors.response.use(
+service.interceptors.response.use(
   response => {
 
     if(!!response&&!!response.data&&!!response.data.encSecKey){
