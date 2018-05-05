@@ -58,8 +58,13 @@ export default {
     theme: 'theme'
   },
   login: {
-    title: 'Login Form',
+    title: 'Managment System Login Form',
     logIn: 'Log in',
+    welcome:'You are welcome!',
+    tip:{
+      username:'Please enter the correct user name',
+      password:'The password can not be less than 5 digits'
+    },
     username: 'Username',
     password: 'Password',
     any: 'any',

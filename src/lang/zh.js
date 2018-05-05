@@ -58,8 +58,13 @@ export default {
     theme: '换肤'
   },
   login: {
-    title: '系统登录',
+    title: '后台管理系统登录',
     logIn: '登录',
+    welcome:'欢迎使用后台管理系统!',
+    tip:{
+      username:'请输入正确的用户名',
+      password:'密码长度不能少于5位'
+    },
     username: '账号',
     password: '密码',
     any: '随便填',
