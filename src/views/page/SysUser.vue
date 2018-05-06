@@ -17,7 +17,7 @@
 
 <template>
 
-<div class="table">
+<div class="app-container calendar-list-container">
     <div class="crumbs">
         <el-breadcrumb separator="/">
             <el-breadcrumb-item><i class="el-icon-menu"></i> 系统管理</el-breadcrumb-item>
@@ -60,7 +60,7 @@
         </el-pagination>
     </div>
 
-    <el-dialog title="修改用户密码" v-model="dialogPwdFormVisible" size="tiny">
+    <el-dialog title="修改用户密码" v-model="dialogPwdFormVisible" :visible.sync="dialogPwdFormVisible"  size="tiny">
         <el-form ref="editPwdForm"  :rules="pwdRules" :model="editPwdForm" label-width="80px">
             <el-form-item label="登录账户">
                 <el-input v-model="editPwdForm.email" :disabled="!editPwdForm.abled.email"></el-input>
@@ -85,7 +85,7 @@
         </el-form>
     </el-dialog>
 
-    <el-dialog title="编辑用户信息" v-model="dialogFormVisible" size="tiny">
+    <el-dialog title="编辑用户信息" v-model="dialogFormVisible" :visible.sync="dialogFormVisible" size="tiny">
         <el-form ref="editForm" :model="editForm" label-width="80px">
             <el-form-item label="登录账户">
                 <el-input v-model="editForm.email" :disabled="!editForm.abled.email"></el-input>
@@ -140,7 +140,7 @@
 </template>
 
 <script>
-import http from '../../util/http';
+import http from '@/utils/http';
 export default {
     data() {
             return {

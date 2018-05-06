@@ -33,7 +33,7 @@ export default {
     console.log(process.env);
 
     this.loading = true;
-    http.post('http://wx.sunfintech.com.cn/sunvue-gateway-webapp/sysMenu/getMenus.do',{},response => {
+    http.post(this.GLOBAL.baseurl + 'sysMenu/getMenus.do',{},response => {
       console.log(response);
       let tmp=constantRouterMap;
       for(let i in tmp){

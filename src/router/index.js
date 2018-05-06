@@ -55,6 +55,7 @@ export const constantRouterMap = [
       icon: 'component'
     },
     children: [
+      { path: 'sysuser', component: _import('page/SysUser'), name: 'sysuser', meta: { title: 'sysuser',icon: 'component' }},
       { path: 'tinymce', component: _import('components-demo/tinymce'), name: 'tinymce-demo', meta: { title: 'tinymce',icon: 'component' }},
       { path: 'markdown', component: _import('components-demo/markdown'), name: 'markdown-demo', meta: { title: 'markdown' }},
       { path: 'json-editor', component: _import('components-demo/jsonEditor'), name: 'jsonEditor-demo', meta: { title: 'jsonEditor' }},
