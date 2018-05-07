@@ -49,9 +49,9 @@ export const constantRouterMap = [
     path: '/components',
     component: Layout,
     redirect: 'noredirect',
-    name: 'component-demo',
+    name: 'sysmanager',
     meta: {
-      title: 'components',
+      title: 'sysmanager',
       icon: 'component'
     },
     children: [
