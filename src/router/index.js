@@ -58,6 +58,20 @@ export const constantRouterMap = [
       { path: 'sysuser', component: _import('page/SysUser'), name: 'sysuser', meta: { title: 'sysuser',icon: 'component' }},
       { path: 'tinymce', component: _import('components-demo/tinymce'), name: 'tinymce-demo', meta: { title: 'tinymce',icon: 'component' }},
       { path: 'markdown', component: _import('components-demo/markdown'), name: 'markdown-demo', meta: { title: 'markdown' }},
+    ]
+  },
+  {
+    path: '/components',
+    component: Layout,
+    redirect: 'noredirect',
+    name: 'sysmanager1',
+    meta: {
+      title: 'sysmanager1',
+      icon: 'component'
+    },
+    children: [
+      { path: 'tinymce', component: _import('components-demo/tinymce'), name: 'tinymce-demo', meta: { title: 'tinymce',icon: 'component' }},
+      { path: 'markdown', component: _import('components-demo/markdown'), name: 'markdown-demo', meta: { title: 'markdown' }},
       { path: 'json-editor', component: _import('components-demo/jsonEditor'), name: 'jsonEditor-demo', meta: { title: 'jsonEditor' }},
       { path: 'dnd-list', component: _import('components-demo/dndList'), name: 'dndList-demo', meta: { title: 'dndList' }},
       { path: 'splitpane', component: _import('components-demo/splitpane'), name: 'splitpane-demo', meta: { title: 'splitPane' }},
