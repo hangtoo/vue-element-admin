@@ -65,7 +65,7 @@
 import treeTable from '@/components/TreeTable'
 import http from '@/utils/http';
 export default {
-    name: 'Menus',
+    name: 'Department',
     data() {
         return {
             dataurl: this.GLOBAL.baseurl+'sysDepartment/getDepartmentTable.do',

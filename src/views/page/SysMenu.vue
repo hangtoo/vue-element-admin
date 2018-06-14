@@ -21,23 +21,22 @@
 
 <template>
 
-<div class="Menus">
-
-    <div class="crumbs">
-        <el-breadcrumb separator="/">
-            <el-breadcrumb-item><i class="el-icon-menu"></i> 系统管理</el-breadcrumb-item>
-            <el-breadcrumb-item>权限管理</el-breadcrumb-item>
-            <el-breadcrumb-item>菜单管理</el-breadcrumb-item>
-        </el-breadcrumb>
-    </div>
+<div class="app-container calendar-list-container">
 
     <div class="handle-box">
         <el-button type="primary" icon="delete" class="handle-del mr10" @click="handleAdd">新增</el-button>
     </div>
 
-    <tree-grid :columns="columns" :tree-structure="true" :data-source="dataSource" :defaultExpandAll="treeParams.defaultExpandAll" :treeType="treeParams.treeType" :handleTreeEdit="handleTreeEdit" :handleTreeDel="handleTreeDel" :handleSelectionChange="handleSelectionChange"></tree-grid>
+    <tree-table :data="dataSource" :columns="columns" :expandAll="treeParams.defaultExpandAll" border :handleSelectionChange="handleSelectionChange">
+        <el-table-column label="操作" width="200">
+          <template slot-scope="scope">
+            <el-button type="text" @click="handleTreeEdit(scope.$index,scope.row)">编辑</el-button>
+            <el-button type="text" @click="handleTreeDel(scope.$index,scope.row)">删除</el-button>
+          </template>
+        </el-table-column>
+    </tree-table>
 
-    <el-dialog title="编辑菜单信息" v-model="dialogFormVisible" size="tiny">
+    <el-dialog title="编辑菜单信息" :visible.sync="dialogFormVisible" size="tiny">
         <el-form ref="editForm" :model="editForm" label-width="80px">
             <el-form-item label="菜单名称">
                 <el-input v-model="editForm.name" width="150" ></el-input>
@@ -69,10 +68,7 @@
 
 <script>
 
-import {
-    TreeGrid
-}
-from '../common/treeTable'
+import treeTable from '@/components/TreeTable'
 
 import http from '@/utils/http';
 
@@ -92,20 +88,27 @@ export default {
             editLoading: false,
             columns: [{
                 text: '菜单名称',
+                value: 'name',
                 dataIndex: 'name'
             }, {
                 text: '菜单编码',
+                value: 'code',
                 dataIndex: 'code'
             }, {
                 text: '链接',
+                value: 'url',
                 dataIndex: 'url'
             }, {
                 text: '图标',
+                value: 'icon',
                 dataIndex: 'icon'
-            }, {
-                text: '排序',
-                dataIndex: 'rank'
-            }],
+            }
+            // , {
+            //     text: '排序',
+            //     value: 'rank',
+            //     dataIndex: 'rank'
+            // }
+            ],
             dataSource: [],
             treeParams: {
                 requestUrl: "menu",
@@ -207,7 +210,7 @@ export default {
             }
     },
     components: {
-        TreeGrid
+        treeTable
     }
 }
 
