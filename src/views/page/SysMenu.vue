@@ -74,7 +74,7 @@ import {
 }
 from '../common/treeTable'
 
-import http from '../../util/http';
+import http from '@/utils/http';
 
 export default {
     name: 'Menus',
@@ -185,9 +185,9 @@ export default {
 			                    this.$eventHub.$emit('error', err);
 			                })
 						}).catch(() => {
-							        
+
 						});
-               
+
             },
             handleSelectionChange: function(val) {
                 //console.log(val);

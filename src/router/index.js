@@ -40,9 +40,9 @@ export const constantRouterMap = [
     hidden: false,
     children: [{
       path: 'dashboard',
-      component: _import('dashboard/index'),
+      component: _import('page/Readme'),
       name: 'dashboard',
-      meta: { title: 'dashboard', icon: 'dashboard', noCache: true },
+      meta: { title: 'dashboard', icon: 'Readme', noCache: true },
     }]
   },
   {
@@ -56,6 +56,9 @@ export const constantRouterMap = [
     },
     children: [
       { path: 'sysuser', component: _import('page/SysUser'), name: 'sysuser', meta: { title: 'sysuser',icon: 'component' }},
+      { path: 'sysmenu', component: _import('page/SysMenu'), name: 'sysmenu', meta: { title: 'sysmenu',icon: 'component' }},
+      { path: 'sysrole', component: _import('page/SysRole'), name: 'sysRole', meta: { title: 'sysrole',icon: 'component' }},
+      { path: 'sysdepartment', component: _import('page/SysDepartment'), name: 'sysDepartment', meta: { title: 'sysdepartment',icon: 'component' }},
       { path: 'tinymce', component: _import('components-demo/tinymce'), name: 'tinymce-demo', meta: { title: 'tinymce',icon: 'component' }},
       { path: 'markdown', component: _import('components-demo/markdown'), name: 'markdown-demo', meta: { title: 'markdown' }},
     ]

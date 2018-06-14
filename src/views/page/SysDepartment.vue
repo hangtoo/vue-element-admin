@@ -21,23 +21,22 @@
 
 <template>
 
-<div class="Menus">
-
-    <div class="crumbs">
-        <el-breadcrumb separator="/">
-            <el-breadcrumb-item><i class="el-icon-menu"></i> 系统管理</el-breadcrumb-item>
-            <el-breadcrumb-item>权限管理</el-breadcrumb-item>
-            <el-breadcrumb-item>部门管理</el-breadcrumb-item>
-        </el-breadcrumb>
-    </div>
+<div class="app-container calendar-list-container">
 
     <div class="handle-box">
         <el-button type="primary" icon="delete" class="handle-del mr10" @click="handleAdd">新增</el-button>
     </div>
 
-    <tree-grid :columns="columns" :tree-structure="true" :data-source="dataSource" :defaultExpandAll="treeParams.defaultExpandAll" :treeType="treeParams.treeType" :handleTreeEdit="handleTreeEdit" :handleTreeDel="handleTreeDel" :handleSelectionChange="handleSelectionChange"></tree-grid>
+<tree-table :data="dataSource" :columns="columns" :expandAll="treeParams.defaultExpandAll" border :handleSelectionChange="handleSelectionChange">
+    <el-table-column label="操作" width="200">
+      <template slot-scope="scope">
+        <el-button type="text" @click="handleTreeEdit(scope.$index,scope.row)">编辑</el-button>
+        <el-button type="text" @click="handleTreeDel(scope.$index,scope.row)">删除</el-button>
+      </template>
+    </el-table-column>
+</tree-table>
 
-    <el-dialog title="编辑部门信息" v-model="dialogFormVisible" size="tiny">
+    <el-dialog title="编辑部门信息" :visible.sync="dialogFormVisible" size="tiny">
         <el-form ref="editForm" :model="editForm" label-width="80px">
             <el-form-item label="部门名称">
                 <el-input v-model="editForm.name"></el-input>
@@ -63,11 +62,8 @@
 
 <script>
 
-import {
-    TreeGrid
-}
-from '../common/treeTable'
-import http from '../../util/http';
+import treeTable from '@/components/TreeTable'
+import http from '@/utils/http';
 export default {
     name: 'Menus',
     data() {
@@ -84,12 +80,15 @@ export default {
             editLoading: false,
             columns: [{
                 text: '部门名称',
+                value: 'name',
                 dataIndex: 'name'
             }, {
                 text: '部门编码',
+                value: 'code',
                 dataIndex: 'code'
             }, {
                 text: '部门描述',
+                value: 'descr',
                 dataIndex: 'descr'
             }],
             dataSource: [],
@@ -162,7 +161,7 @@ export default {
           			cancelButtonText: '取消',
          			type: 'warning'
         		}).then(() => {
-          			
+
           			const self = this;
                 http.post(self.deleteurl, {
                     id: row.id
@@ -181,12 +180,12 @@ export default {
           			this.$message({
             			type: 'info',
             			message: '已取消删除'
-          			});          
+          			});
         			});
-                
+
             },
             handleSelectionChange: function(val) {
-                //console.log(val);
+                console.log(val);
                 if (val instanceof Array) {
                     if (val.length == 0) {
                         this.treeParams.table_id = null;
@@ -203,7 +202,7 @@ export default {
             }
     },
     components: {
-        TreeGrid
+        treeTable
     }
 }
 

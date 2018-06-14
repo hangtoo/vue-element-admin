@@ -18,13 +18,6 @@
 <template>
 
 <div class="app-container calendar-list-container">
-    <div class="crumbs">
-        <el-breadcrumb separator="/">
-            <el-breadcrumb-item><i class="el-icon-menu"></i> 系统管理</el-breadcrumb-item>
-            <el-breadcrumb-item>权限管理</el-breadcrumb-item>
-            <el-breadcrumb-item>用户管理</el-breadcrumb-item>
-        </el-breadcrumb>
-    </div>
     <div class="handle-box">
         <el-button type="primary" icon="add" class="handle-add mr10" @click="handleAdd">新增</el-button>
         <el-input v-model="searchForm.email" placeholder="登录账户" class="handle-input mr10"></el-input>

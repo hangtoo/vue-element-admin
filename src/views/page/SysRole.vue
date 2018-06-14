@@ -17,14 +17,7 @@
 
 <template>
 
-<div class="table">
-    <div class="crumbs">
-        <el-breadcrumb separator="/">
-            <el-breadcrumb-item><i class="el-icon-menu"></i> 系统管理</el-breadcrumb-item>
-            <el-breadcrumb-item>权限管理</el-breadcrumb-item>
-            <el-breadcrumb-item>角色管理</el-breadcrumb-item>
-        </el-breadcrumb>
-    </div>
+<div class="app-container calendar-list-container">
     <div class="handle-box">
         <el-button type="primary" icon="add" class="handle-add mr10" @click="handleAdd">新增</el-button>
         <el-input v-model="searchForm.rolecode" placeholder="角色编码" class="handle-input mr10"></el-input>
@@ -55,7 +48,7 @@
         </el-pagination>
     </div>
 
-    <el-dialog title="编辑角色信息" v-model="dialogFormVisible" size="tiny">
+    <el-dialog title="编辑角色信息" :visible.sync="dialogFormVisible" size="tiny">
         <el-form ref="editForm" :model="editForm" label-width="80px">
           <input v-model="editForm.id" type="hidden"></input>
             <el-form-item label="角色编码">
@@ -114,7 +107,7 @@
 </template>
 
 <script>
-import http from '../../util/http';
+import http from '@/utils/http';
 export default {
     data() {
             return {
@@ -269,7 +262,7 @@ export default {
           			cancelButtonText: '取消',
          			type: 'warning'
         		}).then(() => {
-          			
+
           			const self = this;
                     console.log(row);
                     http.post(self.deleteurl, {
@@ -288,10 +281,10 @@ export default {
           			this.$message({
             			type: 'info',
             			message: '已取消删除'
-          			});          
+          			});
         			});
 
-                    
+
                 },
                 handleSave() {
                     const self = this;
@@ -340,7 +333,7 @@ export default {
                   this.searchForm = {
                         rolecode: '',
                         rolename: '',
- 
+
 
                     pageNum: 1,
                     totalRow: 0,

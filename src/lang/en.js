@@ -1,6 +1,11 @@
 export default {
   route: {
     dashboard: 'Dashboard',
+    sysmanager: 'System manage',
+    sysuser: 'User',
+    sysmenu: 'Menu',
+    sysrole: 'Role',
+    sysdepartment: 'Department',
     introduction: 'Introduction',
     documentation: 'Documentation',
     permission: 'Permission',
