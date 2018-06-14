@@ -19,8 +19,8 @@
 
       <el-dropdown class="avatar-container right-menu-item" trigger="click">
         <div class="avatar-wrapper">
-          <img class="user-avatar" :src="avatar+'?imageView2/1/w/80/h/80'">
-          <i class="el-icon-caret-bottom"></i>
+            {{username}}
+            <i class="el-icon-caret-bottom"></i>
         </div>
         <el-dropdown-menu slot="dropdown">
           <router-link to="/">
@@ -28,12 +28,7 @@
               {{$t('navbar.dashboard')}}
             </el-dropdown-item>
           </router-link>
-          <a target='_blank' href="https://github.com/PanJiaChen/vue-element-admin/">
-            <el-dropdown-item>
-              {{$t('navbar.github')}}
-            </el-dropdown-item>
-          </a>
-          <el-dropdown-item divided>
+          <el-dropdown-item>
             <span @click="logout" style="display:block;">{{$t('navbar.logOut')}}</span>
           </el-dropdown-item>
         </el-dropdown-menu>
@@ -65,7 +60,11 @@ export default {
       'sidebar',
       'name',
       'avatar'
-    ])
+    ]),
+    username(){
+        let username = localStorage.getItem('ms_username');
+        return username ? username : this.name;
+    }
   },
   methods: {
     toggleSideBar() {
@@ -73,10 +72,23 @@ export default {
     },
     logout() {
       this.$store.dispatch('LogOut').then(() => {
-        location.reload()// In order to re-instantiate the vue-router object to avoid bugs
+        this.$router.push('/login');
+        //location.reload()// In order to re-instantiate the vue-router object to avoid bugs
       })
     }
-  }
+  },
+  handleCommand(command) {
+      if(command == 'loginout'){
+          localStorage.removeItem('ms_username')
+          this.$router.push('/login');
+      }
+      if(command == 'mima'){
+          this.pwd="";
+          this.newpwd="";
+          this.pwdagain=""
+          this.dialogPassVisible=true;
+      }
+  },
 }
 </script>
 

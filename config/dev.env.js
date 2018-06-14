@@ -8,5 +8,5 @@ var prodEnv = require('./prod.env')
 
 module.exports = {
   NODE_ENV: '"development"',
-  BASE_API: '"http://wx.sunfintech.com.cn/sunvue-gateway-webapp"',
+  BASE_API: '"http://localhost:9999/"',
 }

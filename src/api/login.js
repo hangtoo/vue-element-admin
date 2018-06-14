@@ -2,6 +2,7 @@ import request from '@/utils/request'
 import rsa from '@/utils/rsa'
 import aes from '@/utils/aes'
 import common from '@/utils/common'
+import http from '@/utils/http';
 
 export function loginByUsername1(username, password) {
   const data = {
@@ -9,7 +10,7 @@ export function loginByUsername1(username, password) {
     pwd:password
   }
   return request({
-    url: process.env.BASE_API+'/sysUser/login.do',
+    url: process.env.BASE_API+'sysUser/login.do',
     method: 'post',
     withCredentials : true,
     data
@@ -31,7 +32,7 @@ export function loginByUsername(username, password) {
     method: 'post',
     withCredentials : true,
     baseURL: 'http://localhost:8080',
-    url:process.env.BASE_API+'/sysUser/login.do',
+    url:process.env.BASE_API+'sysUser/login.do',
     data: secKeyParams,
     timeout: 10000,
     headers: {
@@ -44,9 +45,11 @@ export function loginByUsername(username, password) {
 }
 
 export function logout() {
-  return request({
-    url: '/sysUser/logout.do',
-    method: 'post'
+  console.log(process.env.BASE_API);
+  return http.post(process.env.BASE_API+ 'sysUser/logout.do', {},(res) => {
+      console.log(res.data);
+  }).catch(err => {
+      console.log(err);
   })
 }
 

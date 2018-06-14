@@ -1,4 +1,4 @@
 module.exports = {
   NODE_ENV: '"production"',
-  BASE_API: '"http://wx.sunfintech.com.cn/sunvue-gateway-webapp"',
+  BASE_API: '"http://dblink.sunfintech.com.cn/sunvue-gateway-webapp/"',
 }

@@ -4,5 +4,5 @@ const devEnv = require('./dev.env')
 
 module.exports = merge(devEnv, {
   NODE_ENV: '"testing"',
-  BASE_API: '"http://wx.sunfintech.com.cn/sunvue-gateway-webapp"',
+  BASE_API: '"http://wx.sunfintech.com.cn/sunvue-gateway-webapp/"',
 })
