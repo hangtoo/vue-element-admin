@@ -34,7 +34,12 @@ export default {
 
     this.loading = true;
     http.post(process.env.BASE_API + 'sysMenu/getMenus.do',{},response => {
-      console.log(response);
+
+      if(!response||!response.data){
+          this.$router.push('/login');
+          return;
+      }
+
       let tmp=constantRouterMap;
       for(let i in tmp){
         if(tmp[i].name=='dashboard'){

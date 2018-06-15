@@ -94,10 +94,10 @@
                         </el-dropdown-item>
                     </router-link>
                     <el-dropdown-item>
-                        <span @click="logout" style="display:block;">{{$t('navbar.logOut')}}</span>
+                      <span @click="mima" style="display:block;">{{$t('navbar.modifypwd')}}</span>
                     </el-dropdown-item>
                     <el-dropdown-item>
-                        <span @click="mima" style="display:block;">{{$t('navbar.mima')}}</span>
+                        <span @click="logout" style="display:block;">{{$t('navbar.logOut')}}</span>
                     </el-dropdown-item>
                 </el-dropdown-menu>
             </el-dropdown>
@@ -105,20 +105,20 @@
     </el-menu>
 
     <el-dialog :visible.sync="dialogPassVisible" size="tiny">
-        <el-form ref="editPwdForm" :rules="pwdRules" :model="editPwdForm" label-width="80px">
+        <el-form ref="editPwdForm" :rules="pwdRules" :model="editPwdForm" label-width="120px">
 
-            <el-form-item label="旧密码">
+            <el-form-item :label="$t('login.pwd')">
                 <el-input v-model="editPwdForm.pwd" type="password"></el-input>
             </el-form-item>
-            <el-form-item label="新密码">
+            <el-form-item :label="$t('login.newpwd')">
                 <el-input v-model="editPwdForm.newpwd" type="password"></el-input>
             </el-form-item>
-            <el-form-item label="再次输入">
+            <el-form-item :label="$t('login.pwdagain')">
                 <el-input v-model="editPwdForm.pwdagain" type="password"></el-input>
             </el-form-item>
             <el-form-item>
-                <el-button type="primary" @click="handlePwdSave" :loading="editLoading">保存</el-button>
-                <el-button @click="dialogPassVisible = false">取消</el-button>
+                <el-button type="primary" @click="handlePwdSave" :loading="editLoading">{{$t('table.confirm')}}</el-button>
+                <el-button @click="dialogPassVisible = false">{{$t('table.cancel')}}</el-button>
             </el-form-item>
 
         </el-form>

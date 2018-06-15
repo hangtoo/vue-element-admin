@@ -57,6 +57,7 @@ export default {
   },
   navbar: {
     logOut: '退出登录',
+    modifypwd: '修改密码',
     dashboard: '首页',
     github: '项目地址',
     screenfull: '全屏',
@@ -72,6 +73,9 @@ export default {
     },
     username: '账号',
     password: '密码',
+    pwd: '旧密码',
+    newpwd: '新密码',
+    pwdagain: '再次输入',
     any: '随便填',
     thirdparty: '第三方登录',
     thirdpartyTips: '本地不能模拟，请结合自己业务进行模拟！！！'
