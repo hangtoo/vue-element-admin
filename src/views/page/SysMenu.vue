@@ -76,9 +76,9 @@ export default {
     name: 'Menus',
     data() {
         return {
-            dataurl: this.GLOBAL.baseurl+'sysMenu/getMenusTable.do',
-            saveurl: this.GLOBAL.baseurl+'sysMenu/save.do',
-            deleteurl: this.GLOBAL.baseurl+'sysMenu/delete.do',
+            dataurl: process.env.BASE_API+'sysMenu/getMenusTable.do',
+            saveurl: process.env.BASE_API+'sysMenu/save.do',
+            deleteurl: process.env.BASE_API+'sysMenu/delete.do',
             dialogFormVisible: false,
             editForm: {
                 name: '',

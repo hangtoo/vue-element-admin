@@ -68,7 +68,7 @@ export default {
       }
     }
     return {
-      loginurl: this.GLOBAL.baseurl + 'sysUser/login.do',
+      loginurl: process.env.BASE_API + 'sysUser/login.do',
       loginForm: {
         username: 'admin',
         password: 'admin'

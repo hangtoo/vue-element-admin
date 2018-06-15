@@ -85,7 +85,7 @@
         methods:{
         	loadData(){
         		var self = this;
-				http.post(this.GLOBAL.baseurl + 'tCustomer/readmedata.do',{},
+				http.post(process.env.BASE_API + 'tCustomer/readmedata.do',{},
 				response => {
         			self.statistics.customercount = response.data.customercount;
         			self.statistics.todayrecustomer = response.data.todayrecustomer;

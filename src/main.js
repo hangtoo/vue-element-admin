@@ -22,8 +22,6 @@ Vue.use(Element, {
   i18n: (key, value) => i18n.t(key, value)
 })
 
-import config_ from './config/config'
-Vue.prototype.GLOBAL = config_.config
 
 import axios from 'axios';
 axios.defaults.withCredentials = true

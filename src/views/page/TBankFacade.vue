@@ -90,10 +90,10 @@ import http from '@/utils/http';
 export default {
     data() {
             return {
-                getdataurl: this.GLOBAL.baseurl + 'tBankFacade/getId.do',
-                dataurl: this.GLOBAL.baseurl + 'tBankFacade/dataList.do',
-                saveurl: this.GLOBAL.baseurl + 'tBankFacade/save.do',
-                deleteurl: this.GLOBAL.baseurl + 'tBankFacade/delete.do',
+                getdataurl: process.env.BASE_API + 'tBankFacade/getId.do',
+                dataurl: process.env.BASE_API + 'tBankFacade/dataList.do',
+                saveurl: process.env.BASE_API + 'tBankFacade/save.do',
+                deleteurl: process.env.BASE_API + 'tBankFacade/delete.do',
                 dialogFormVisible: false,
                 editLoading: false,
                 editForm: {

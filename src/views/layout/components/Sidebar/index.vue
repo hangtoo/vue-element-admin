@@ -33,7 +33,7 @@ export default {
     console.log(process.env);
 
     this.loading = true;
-    http.post(this.GLOBAL.baseurl + 'sysMenu/getMenus.do',{},response => {
+    http.post(process.env.BASE_API + 'sysMenu/getMenus.do',{},response => {
       console.log(response);
       let tmp=constantRouterMap;
       for(let i in tmp){

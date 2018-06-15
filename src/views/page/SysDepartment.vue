@@ -68,9 +68,9 @@ export default {
     name: 'Department',
     data() {
         return {
-            dataurl: this.GLOBAL.baseurl+'sysDepartment/getDepartmentTable.do',
-            saveurl: this.GLOBAL.baseurl+'sysDepartment/save.do',
-            deleteurl: this.GLOBAL.baseurl+'sysDepartment/delete.do',
+            dataurl: process.env.BASE_API+'sysDepartment/getDepartmentTable.do',
+            saveurl: process.env.BASE_API+'sysDepartment/save.do',
+            deleteurl: process.env.BASE_API+'sysDepartment/delete.do',
             dialogFormVisible: false,
             editForm: {
                 name: '',

@@ -71,7 +71,7 @@ import http from '../../util/http';
 export default {
     data() {
             return {
-                treedataurl: this.GLOBAL.baseurl + 'sysMenu/getMenus.do',
+                treedataurl: process.env.BASE_API + 'sysMenu/getMenus.do',
                 items: []
             }
         },

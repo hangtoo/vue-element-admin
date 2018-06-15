@@ -42,7 +42,7 @@ import http from '../../util/http';
     export default {
         data() {
             return {
-            	updatepwdurl: this.GLOBAL.baseurl + 'sysUser/rePwd.do',
+            	updatepwdurl: process.env.BASE_API + 'sysUser/rePwd.do',
                 name: '',
                 dialogPassVisible: false,
                 passloading: false,

@@ -117,10 +117,10 @@ import http from '@/utils/http';
 export default {
     data() {
             return {
-                getdataurl: this.GLOBAL.baseurl + 'tApiLog/getId.do',
-                dataurl: this.GLOBAL.baseurl + 'tApiLog/dataList.do',
-                saveurl: this.GLOBAL.baseurl + 'tApiLog/save.do',
-                deleteurl: this.GLOBAL.baseurl + 'tApiLog/delete.do',
+                getdataurl: process.env.BASE_API + 'tApiLog/getId.do',
+                dataurl: process.env.BASE_API + 'tApiLog/dataList.do',
+                saveurl: process.env.BASE_API + 'tApiLog/save.do',
+                deleteurl: process.env.BASE_API + 'tApiLog/delete.do',
                 dialogFormVisible: false,
                 editLoading: false,
                 editForm: {

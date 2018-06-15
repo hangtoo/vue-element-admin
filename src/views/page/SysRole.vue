@@ -111,11 +111,11 @@ import http from '@/utils/http';
 export default {
     data() {
             return {
-                getdataurl: this.GLOBAL.baseurl + 'sysRole/getId.do',
-                dataurl: this.GLOBAL.baseurl + 'sysRole/dataList.do',
-                saveurl: this.GLOBAL.baseurl + 'sysRole/save.do',
-                deleteurl: this.GLOBAL.baseurl + 'sysRole/delete.do',
-                menutreeurl: this.GLOBAL.baseurl + 'sysMenu/getMenusTable.do',
+                getdataurl: process.env.BASE_API + 'sysRole/getId.do',
+                dataurl: process.env.BASE_API + 'sysRole/dataList.do',
+                saveurl: process.env.BASE_API + 'sysRole/save.do',
+                deleteurl: process.env.BASE_API + 'sysRole/delete.do',
+                menutreeurl: process.env.BASE_API + 'sysMenu/getMenusTable.do',
                 dialogFormVisible: false,
                 editLoading: false,
                 editForm: {
