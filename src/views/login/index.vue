@@ -89,6 +89,23 @@ export default {
             email : self.loginForm.username,
             pwd : self.loginForm.password
           },response => {
+
+            if(!response.data){
+              self.$message.error({
+                  message: 'timeout error'
+              });
+              this.loading = false;
+              return;
+            }
+
+            if(!response.data.success){
+              self.$message.error({
+                  message: response.data.msg
+              });
+              this.loading = false;
+              return;
+            }
+
             //commit('SET_TOKEN', response.data)
             setToken(self.loginForm.username)
             this.loading = false

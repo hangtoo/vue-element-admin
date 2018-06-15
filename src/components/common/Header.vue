@@ -13,11 +13,11 @@
                 </el-dropdown-menu>
             </el-dropdown>
         </div>
-        
-        
+
+
         <el-dialog   v-model="dialogPassVisible" size="tiny">
 			<el-form ref="editPwdForm"  :rules="pwdRules" :model="editPwdForm" label-width="80px">
-			
+
 			<el-form-item label="旧密码">
             	<el-input v-model="editPwdForm.pwd" type="password" ></el-input>
             </el-form-item>
@@ -31,11 +31,11 @@
                 <el-button type="primary" @click="handlePwdSave" :loading="editLoading">保存</el-button>
                 <el-button @click="dialogPassVisible = false">取消</el-button>
             </el-form-item>
-	
+
 			</el-form>
 		</el-dialog>
-		
-    </div>  
+
+    </div>
 </template>
 <script>
 import http from '../../util/http';
@@ -93,8 +93,8 @@ import http from '../../util/http';
                     });
                     return;
                   }
-                  
-                  if(this.editPwdForm.newpwd=this.editPwdForm.pwd){
+
+                  if(this.editPwdForm.newpwd==this.editPwdForm.pwd){
                     this.$message.error({
                           title: '错误',
                           message: '新密码不能与旧密码相同'
@@ -126,13 +126,13 @@ import http from '../../util/http';
                       }
                   });
 			},
-            
-            
-            
-            
-            
-            
-        },    
+
+
+
+
+
+
+        },
     }
 </script>
 <style scoped>
