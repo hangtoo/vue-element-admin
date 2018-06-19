@@ -31,12 +31,13 @@
             height: 20px;
         }
         .international {
-            vertical-align: top;
+            vertical-align: 15px;
         }
         .theme-switch {
             vertical-align: 15px;
         }
         .avatar-container {
+            vertical-align: 15px;
             height: 50px;
             margin-right: 30px;
             .avatar-wrapper {
@@ -76,11 +77,11 @@
                 <screenfull class="screenfull right-menu-item"></screenfull>
             </el-tooltip>
 
-            <el-tooltip effect="dark" :content="$t('navbar.theme')" placement="bottom">
-                <theme-picker class="theme-switch right-menu-item"></theme-picker>
-            </el-tooltip>
-
             <lang-select class="international right-menu-item"></lang-select>
+
+            <el-tooltip effect="dark" :content="$t('navbar.theme')" placement="bottom">
+              <theme-picker class="theme-switch right-menu-item"></theme-picker>
+            </el-tooltip>
 
             <el-dropdown class="avatar-container right-menu-item" trigger="click">
                 <div class="avatar-wrapper">
@@ -104,7 +105,7 @@
         </div>
     </el-menu>
 
-    <el-dialog :visible.sync="dialogPassVisible" size="tiny">
+    <el-dialog title="修改密码" :visible.sync="dialogPassVisible" size="tiny">
         <el-form ref="editPwdForm" :rules="pwdRules" :model="editPwdForm" label-width="120px">
 
             <el-form-item :label="$t('login.pwd')">
