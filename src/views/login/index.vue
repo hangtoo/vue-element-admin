@@ -1,10 +1,10 @@
 <template>
   <div class="login-container">
+    <div class="title-container">
+      <h3 class="title">{{$t('login.title')}}</h3>
+      <lang-select class="set-language"></lang-select>
+    </div>
     <el-form class="login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
-      <div class="title-container">
-        <h3 class="title">{{$t('login.title')}}</h3>
-        <lang-select class="set-language"></lang-select>
-      </div>
       <el-form-item prop="username">
         <span class="svg-container svg-container_login">
           <svg-icon icon-class="user" />
@@ -22,7 +22,7 @@
         </span>
       </el-form-item>
 
-      <el-button type="primary" style="width:100%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">{{$t('login.logIn')}}</el-button>
+      <el-button type="primary" style="width:100%;margin-bottom:5px;" :loading="loading" @click.native.prevent="handleLogin">{{$t('login.logIn')}}</el-button>
 
       <div class="tips">
         <span style="margin-right:18px;">{{$t('login.welcome')}} </span>
@@ -140,12 +140,13 @@ export default {
 <style rel="stylesheet/scss" lang="scss">
 $bg:#2d3a4b;
 $light_gray:#eee;
+$gray:#000;
 
 /* reset element-ui css */
 .login-container {
   .el-input {
     display: inline-block;
-    height: 47px;
+    height: 25px;
     width: 85%;
     input {
       background: transparent;
@@ -153,19 +154,20 @@ $light_gray:#eee;
       -webkit-appearance: none;
       border-radius: 0px;
       padding: 12px 5px 12px 15px;
-      color: $light_gray;
-      height: 47px;
+      color: $gray;
+      height: 25px;
       &:-webkit-autofill {
-        -webkit-box-shadow: 0 0 0px 1000px $bg inset !important;
-        -webkit-text-fill-color: #fff !important;
+        -webkit-box-shadow: 0 0 0px 1000px #fff inset !important;
+        -webkit-text-fill-color: $bg !important;
       }
     }
   }
   .el-form-item {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid #bfcbd9;
+    height: 43px;
+    background: #fff;
     border-radius: 5px;
-    color: #454545;
+    color: #1f2d3d;
   }
 }
 </style>
@@ -184,14 +186,17 @@ $light_gray:#eee;
     position: absolute;
     left: 0;
     right: 0;
-    width: 520px;
+    width: 450px;
+    height:260px;
     padding: 35px 35px 15px 35px;
-    margin: 120px auto;
+    margin: 180px auto;
+    background: #fff;
+    border-radius:5px;
   }
   .tips {
-    font-size: 14px;
-    color: #fff;
-    margin-bottom: 10px;
+    font-size: 12px;
+    margin-bottom: 15px;
+    color: $bg;
     span {
       &:first-of-type {
         margin-right: 16px;
@@ -199,7 +204,7 @@ $light_gray:#eee;
     }
   }
   .svg-container {
-    padding: 6px 5px 6px 15px;
+    padding: 2px 5px 6px 15px;
     color: $dark_gray;
     vertical-align: middle;
     width: 30px;
@@ -209,9 +214,12 @@ $light_gray:#eee;
     }
   }
   .title-container {
-    position: relative;
+    position: absolute;
+    width:100%;
+    margin: 100px auto;
+    text-align: center;
     .title {
-      font-size: 26px;
+      font-size: 30px;
       font-weight: 400;
       color: $light_gray;
       margin: 0px auto 40px auto;
@@ -233,11 +241,6 @@ $light_gray:#eee;
     color: $dark_gray;
     cursor: pointer;
     user-select: none;
-  }
-  .thirdparty-button {
-    position: absolute;
-    right: 35px;
-    bottom: 28px;
   }
 }
 </style>

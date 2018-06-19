@@ -29,7 +29,6 @@ export default {
   },
   components: { SidebarItem, ScrollBar },
   mounted(){
-    console.log('---------');
     console.log(process.env);
 
     this.loading = true;
