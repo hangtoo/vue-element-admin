@@ -22,7 +22,7 @@
         </span>
       </el-form-item>
 
-      <el-button type="primary" style="width:100%;margin-bottom:5px;" :loading="loading" @click.native.prevent="handleLogin">{{$t('login.logIn')}}</el-button>
+      <el-button type="primary" style="width:100%;margin-bottom:5px;" :disabled="disabled" :loading="loading" @click.native.prevent="handleLogin">{{$t('login.logIn')}}</el-button>
 
       <div class="tips">
         <span style="margin-right:18px;">{{$t('login.welcome')}} </span>
@@ -68,6 +68,7 @@ export default {
       },
       passwordType: 'password',
       loading: false,
+      disabled: false,
       showDialog: false
     }
   },
@@ -80,10 +81,12 @@ export default {
       }
     },
     handleLogin() {
+      console.log('handleLogin');
       let self=this;
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true;
+          this.disabled = true;
 
           http.post(process.env.BASE_API+'sysUser/login.do',{
             email : self.loginForm.username,
@@ -95,6 +98,7 @@ export default {
                   message: 'timeout error'
               });
               this.loading = false;
+              this.disabled = false;
               return;
             }
 
@@ -103,16 +107,19 @@ export default {
                   message: response.data.msg
               });
               this.loading = false;
+              this.disabled = false;
               return;
             }
 
             //commit('SET_TOKEN', response.data)
             setToken(self.loginForm.username)
             this.loading = false
+            this.disabled = false;
             this.$router.push({ path: '/' })
 
           }).catch(err => {
              this.loading = false
+             this.disabled = false;
           });
 
           // this.$store.dispatch('LoginByUsername', this.loginForm).then(() => {
