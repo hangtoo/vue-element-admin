@@ -59,8 +59,8 @@ export const constantRouterMap = [
       { path: 'sysmenu', component: _import('page/SysMenu'), name: 'sysmenu', meta: { title: 'sysmenu',icon: 'component' }},
       { path: 'sysrole', component: _import('page/SysRole'), name: 'sysRole', meta: { title: 'sysrole',icon: 'component' }},
       { path: 'sysdepartment', component: _import('page/SysDepartment'), name: 'sysDepartment', meta: { title: 'sysdepartment',icon: 'component' }},
-      { path: 'tinymce', component: _import('components-demo/tinymce'), name: 'tinymce-demo', meta: { title: 'tinymce',icon: 'component' }},
-      { path: 'markdown', component: _import('components-demo/markdown'), name: 'markdown-demo', meta: { title: 'markdown' }},
+      { path: 'tapilog', component: _import('page/TApiLog'), name: 'tapilog', meta: { title: 'tapilog',icon: 'component' }},
+      { path: 'tbankfacade', component: _import('page/TBankFacade'), name: 'tbankfacade', meta: { title: 'tbankfacade',icon: 'component' }},
     ]
   },
   {

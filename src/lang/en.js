@@ -6,6 +6,8 @@ export default {
     sysmenu: 'Menu',
     sysrole: 'Role',
     sysdepartment: 'Department',
+    tapilog: 'Log',
+    tbankfacade: 'Bank Facade',
     introduction: 'Introduction',
     documentation: 'Documentation',
     permission: 'Permission',

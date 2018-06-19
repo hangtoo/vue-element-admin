@@ -6,6 +6,8 @@ export default {
     sysmenu: '菜单管理',
     sysrole: '角色管理',
     sysdepartment: '部门管理',
+    tapilog: '日志管理',
+    tbankfacade: '接口管理',
     introduction: '简述',
     documentation: '文档',
     permission: '权限测试页',

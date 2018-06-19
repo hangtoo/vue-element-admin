@@ -16,13 +16,7 @@
 </style>
 
 <template>
-<div class="table">
-    <div class="crumbs">
-        <el-breadcrumb separator="/">
-            <el-breadcrumb-item><i class="el-icon-menu"></i> 管理</el-breadcrumb-item>
-            <el-breadcrumb-item>银行接口</el-breadcrumb-item>
-        </el-breadcrumb>
-    </div>
+<div class="app-container calendar-list-container">
     <div class="handle-box">
         <el-button type="primary" icon="add" class="handle-add mr10" @click="handleAdd">新增</el-button>
 
@@ -60,7 +54,7 @@
         </el-pagination>
     </div>
 
-    <el-dialog title="编辑银行接口" v-model="dialogFormVisible" size="tiny">
+    <el-dialog title="编辑银行接口" :visible.sync="dialogFormVisible" size="tiny">
         <el-form ref="editForm" :model="editForm" label-width="80px">
         		<input v-model="editForm.id" type="hidden"></input>
 

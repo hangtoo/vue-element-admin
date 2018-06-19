@@ -16,24 +16,23 @@
 </style>
 
 <template>
-<div class="table">
-    <div class="crumbs">
-        <el-breadcrumb separator="/">
-            <el-breadcrumb-item><i class="el-icon-menu"></i> 管理</el-breadcrumb-item>
-            <el-breadcrumb-item>接口日志表</el-breadcrumb-item>
-        </el-breadcrumb>
-    </div>
+<div class="app-container calendar-list-container">
     <div class="handle-box">
 
 		<el-input v-model="searchForm.user_id" placeholder="登录用户" class="handle-input mr10"></el-input>
 		<el-input v-model="searchForm.api_url" placeholder="接口地址" class="handle-input mr10"></el-input>
 		<el-input v-model="searchForm.api_json" placeholder="接口内容" class="handle-input mr10"></el-input>
-		<el-input v-model="searchForm.ret_json" placeholder="接口返回内容" class="handle-input mr10"></el-input>
-		<el-date-picker v-model="searchForm.time_s":editable="false" type="datetime"  placeholder="调用时间（起）" ></el-date-picker>
-		<el-date-picker v-model="searchForm.time_e":editable="false" type="datetime"  placeholder="调用时间（终）" ></el-date-picker>
+
+		<el-input v-model="searchForm.ret_json" placeholder="接口返回内容" v-show="searchForm.expandAll" class="handle-input mr10"></el-input>
+		<el-date-picker v-model="searchForm.time_s":editable="false" type="datetime" v-show="searchForm.expandAll" placeholder="调用时间（起）"></el-date-picker>
+		<el-date-picker v-model="searchForm.time_e":editable="false" type="datetime" v-show="searchForm.expandAll" placeholder="调用时间（终）"></el-date-picker>
 
         <el-button type="primary" icon="search" @click="handleSearch">搜索</el-button>
          <el-button type="primary" icon="search" @click="handleReset">重置</el-button>
+
+    <a style="margin-left: 8px;font-size:10px;color:#409EFF;" v-show="!searchForm.expandAll"  @click="expandSearchForm">展开<i  class="el-icon el-icon-arrow-down" aria-hidden="true"></i></a>
+    <a style="margin-left: 8px;font-size:10px;color:#409EFF;" v-show="searchForm.expandAll"  @click="collapseSearchForm">收回<i  class="el-icon el-icon-arrow-up" aria-hidden="true"></i></a>
+
     </div>
     <el-table :data="data" border style="width: 100%" ref="multipleTable" @sort-change="handleSort">
 
@@ -142,6 +141,7 @@ export default {
                 },
                 editForm_sysMenu_ids:[],
                 searchForm: {
+                  expandAll:false,
     		    	user_id: '',
 	    			api_url: '',
 	    			api_json: '',
@@ -188,6 +188,12 @@ export default {
                 handleSearch() {
                     this.searchForm.is_search = true;
                     this.loadData();
+                },
+                expandSearchForm() {
+                    this.searchForm.expandAll=true;
+                },
+                collapseSearchForm() {
+                    this.searchForm.expandAll=false;
                 },
                 handleSort(val) {
                     console.log(val);
